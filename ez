@@ -119,35 +119,35 @@ for i,v in pairs(HWIDTable) do
 			end,
 			HoverText = "bedwars 2021 script"
 		})
-COB("World", {
+		COB("World", {
 			Name = "flyv2",
-	Function = function(v)
-		longjumpval = v
-		if longjumpval then
-			workspace.Gravity = 0
-			spawn(function()
-				repeat
-					if (not longjumpval) then return end
-					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Freefall)
-					wait(0.1)
-					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Running)
-					wait(0.1)
-					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Climbing)
-					wait(0.1)
-					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
-					wait(0.1)
-					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
-					wait(0.1)
-				until (not longjumpval)
-			end)
-		else
-			workspace.Gravity = 196.19999694824
-			return
-		end
-	end
+			Function = function(v)
+				longjumpval = v
+				if longjumpval then
+					workspace.Gravity = 0
+					spawn(function()
+						repeat
+							if (not longjumpval) then return end
+							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Freefall)
+							wait(0.1)
+							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Running)
+							wait(0.1)
+							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Climbing)
+							wait(0.1)
+							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
+							wait(0.1)
+							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
+							wait(0.1)
+						until (not longjumpval)
+					end)
+				else
+					workspace.Gravity = 196.19999694824
+					return
+				end
+			end
 		})
-		
-		
+
+
 		COB("World", {
 			Name = "Blood",
 			Function = function(v)
@@ -160,9 +160,9 @@ COB("World", {
 				end
 			end
 		})
-		
-		
-		
+
+
+
 		COB("World", {
 			Name = "Ocean",
 			Function = function(v)
@@ -175,8 +175,8 @@ COB("World", {
 				end
 			end
 		})
-		
-		
+
+
 		COB("World", {
 			Name = "grass",
 			Function = function(v)
@@ -186,6 +186,44 @@ COB("World", {
 				else
 					game.Lighting.Ambient = Color3.fromRGB(91, 91, 91)
 					game.Lighting.OutdoorAmbient = Color3.fromRGB(201, 201, 201)
+				end
+			end
+		})
+		
+		
+		COB("Render", {
+			Name = "RektskyAmbience",
+			Function = function(v)
+				if v then
+					wait(0.1)
+					game.Lighting.Ambient = Color3.fromRGB(0, 255, 255)
+					game.Lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+				else
+					game.Lighting.Ambient = Color3.fromRGB(91, 91, 91)
+					game.Lighting.OutdoorAmbient = Color3.fromRGB(201, 201, 201)
+				end
+			end
+		})
+		
+		
+		COB("Render", {
+			Name = "AutoBlockKillAura",
+			function(v)
+				if v and entity.isAlive then
+					connectionkaurablock = game:GetService("RunService").Stepped:connect(function()
+						spawn(function()
+							task.wait()
+							if not v then
+								connectionkaurablock:Disconnect()
+								return 
+							end
+							Client:Get(ShieldRemote):SendToServer({["raised"] = true})
+							KillauraRemote()
+						end)
+					end)
+				else
+					connectionkaurablock:Disconnect()
+					return
 				end
 			end
 		})
