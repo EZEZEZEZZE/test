@@ -71,81 +71,8 @@ for i,v in pairs(HWIDTable) do
 		})
 
 
-		COB("Utility", {
-			Name = "Smartest gui",
-			Function = function(callback) 
-				if callback then
-					pcall(function()
-						loadstring(game:HttpGet('https://shlex.dev/release/domainx/latest.lua',true))()
-					end) 
-				end
-			end,
-			HoverText = "Smartest gui"
-		})
-
-		COB("Utility", {
-			Name = "BedWarsMonkey",
-			Function = function(callback) 
-				if callback then
-					pcall(function()
-						loadstring(game:HttpGet("https://raw.githubusercontent.com/KuriWasTaken/MonkeyScripts/main/BedWarsMonkey.lua"))()
-					end) 
-				end
-			end,
-			HoverText = "idk some shit"
-		})
-
-
-		COB("Utility", {
-			Name = "softbed",
-			Function = function(callback) 
-				if callback then
-					pcall(function()
-						loadstring(game:HttpGet("https://raw.githubusercontent.com/YZHacker0/BedwarsGUI/main/bad.lua", true))()
-					end) 
-				end
-			end,
-			HoverText = "goofy ah hacks"
-		})
-
-		COB("Utility", {
-			Name = "Open GUI",
-			Function = function(callback) 
-				if callback then
-					pcall(function()
-						loadstring(game:HttpGet("https://pastebin.com/raw/UXmbai5q", true))()
-					end)
-				end
-			end,
-			HoverText = "bedwars 2021 script"
-		})
-		COB("World", {
-			Name = "flyv2",
-			Function = function(v)
-				longjumpval = v
-				if longjumpval then
-					workspace.Gravity = 0
-					spawn(function()
-						repeat
-							if (not longjumpval) then return end
-							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Freefall)
-							wait(0.1)
-							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Running)
-							wait(0.1)
-							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Climbing)
-							wait(0.1)
-							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
-							wait(0.1)
-							lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
-							wait(0.1)
-						until (not longjumpval)
-					end)
-				else
-					workspace.Gravity = 196.19999694824
-					return
-				end
-			end
-		})
+		
+		 
 
 
 		COB("World", {
@@ -191,7 +118,7 @@ for i,v in pairs(HWIDTable) do
 		})
 		
 		
-		COB("Render", {
+		COB("World", {
 			Name = "RektskyAmbience",
 			Function = function(v)
 				if v then
@@ -227,5 +154,45 @@ for i,v in pairs(HWIDTable) do
 				end
 			end
 		})
-	end
+
+
+COB("Blatant", {
+	Name = "HypixelFly",
+	Function = function(v)
+        longjumpval = v
+        if longjumpval then
+            workspace.Gravity = 0
+            spawn(function()
+                repeat
+                    if (not longjumpval) then return end
+                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Freefall)
+                    wait(0.1)
+                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Running)
+                    wait(0.1)
+                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Climbing)
+                    wait(0.1)
+                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
+                    wait(0.1)
+                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
+                    wait(0.1)
+                until (not longjumpval)
+            end)
+        else
+            workspace.Gravity = 196.19999694824
+            return
+        end
+    end
+})
+
+COB("Blatant", {
+	Name = "FlyGravity",
+	Function = function(v)
+        if v == true then
+            workspace.Gravity = 10
+        else
+            workspace.Gravity = 196.19999694824
+        end
+    end
+})
+   end
 end
